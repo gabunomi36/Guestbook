@@ -130,7 +130,7 @@ public class SpreadDemo extends HttpServlet {
 	  {
 	    try
 	    {
-			//パラメータを設定する
+			//パラメータを設定する(test)
 			GoogleOAuthParameters params = new GoogleOAuthParameters();
 			params.setOAuthConsumerKey("lso-demo.appspot.com");
 			params.setOAuthConsumerSecret("2hv5cirusCDZjWlitEPzB3Ri");
