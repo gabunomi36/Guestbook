@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="google-site-verification" content="kq9eT8hidC6IP9YGRZ5wK8mOlm1PTmdrGZv9qHT9ekM" />
+		<title>Laughstyle.Office Google App Engine Demo Site</title>
+		<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/start/jquery-ui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+			google.load("jquery","1");
+			google.load("jqueryui","1.8");
+			google.setOnLoadCallback(function(){
+				 	$("#appsSetting").accordion({collapsible: true});
+				 	$("input[type=submit]").button();		 	
+				 });
+		</script>
+	
+		<script type="text/javascript">
+		<!--
+//			$(function(){ $("#appsSetting").accordion()});
+		//-->
+		</script>
+	</head>
+	
+	<body>
+		<div id = "main" style="width: 800px;margin-top: 50px">
+			<div>
+				<form method="post" action="/demo/signon">
+					<div id="appsSetting">
+						<h3><a href="#">Google Calendarデモアプリケーション</a></h3>
+						<div style="height:500px;">
+
+							<h2>Google Calendarデモアプリケーション</h2>
+							<image src="image/ss-1.jpg" width="463" height="182"></image>
+
+							<h2>概要</h2>
+							<pre>
+GData API(Java)で開発中のGoogle Calendar用を読み書き(CRUD)するライブラリを
+デバッグする為に作ったWebアプリケーションです。
+
+今お持ちのGoogle AccountやGoogle AppsのAccountでログインして
+カレンダーイベントを日付指定で検索する事が出来ます。
+読み込んだカレンダーに編集権限があれば編集する事も可能です。
+
+デモサイトはAuthSub認証を使用してますので
+利用される方のアカウントおよびパスワードをアプリケーションから取得する事はありません。
+							</pre>							
+							<h2>技術的な要素</h2>
+							<ul>
+								<li>Google App Engine for Java</li>
+								<li>GData API</li>
+								<li>javascript</li>
+								<li>jQuery</li>
+								<li>Sigmagrid</li>
+							</ul>
+
+							<h2>動作環境</h2>
+							Google ChromeおよびFirefoxで動作の確認をしています。<br/>
+							IE8でも動作する事を確認していますがセキュリティの警告が出ます。
+	
+							<h2>注意事項</h2>
+							<ul>
+								<li>追加および更新機能は有効になっています。普段利用されているカレンダーでの利用は注意してください。</li>
+								<li>安全を考えて削除処理はデプロイ時に無効にしています。</li>
+							</ul>
+	
+							<h2>免責事項</h2>
+							<pre>
+当Webサイトの利用は、お客さまの責任において行われるものとします。
+当Webサイトのコンテンツの作成および配信に関与する者は、当サイトの利用によって生じた
+あらゆる損害に対して、一切の責任を負いません。
+							</pre>
+							<div align="right">
+								<input type="submit" value="デモサイトへ">
+							</div>
+						</div>
+						<h3><a href="#">Option(Google Apps)</a></h3>
+						<div>
+							<label>Google Apps For Your Domain</label><br>
+							<input type="text" name="domainName" id = "domainName"></input>
+							<input type="submit" value="デモサイトへ">
+						</div>
+
+						<h3><a href="#">おしらせ</a></h3>
+						<div>
+							<pre>
+アプリケーションのアップデート等は<a href="http://gabunomi36.blog57.fc2.com/">こちら</a>のブログで公開しております。
+
+不明な点などございましたらブログにコメントを残して頂ければ対応させて頂きます。
+							</pre>
+							<br/>
+							<div style="width: 700px;" align="right">
+								<img src="image/bannerTitle.png" alt="Laughstyle.Office" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div>
+				<div style="width: 800px;" align="right">
+					<img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

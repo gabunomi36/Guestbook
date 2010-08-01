@@ -1,0 +1,175 @@
+<%@ page language="java" contentType="text/html; charset=Shift_JIS"
+    pageEncoding="Shift_JIS"%>
+<%@ page import="java.util.*" %>
+<%@ page import="guestbook.*" %>
+<%@ page import="com.laughstyle.gae.calendar.*" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>Insert title here</title>
+<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/start/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load("jquery","1");
+	google.load("jqueryui","1.8");
+</script>
+
+<script type="text/javascript" src="/scripts/gt_grid_all.js"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/gt_grid.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/skin/vista/skinstyle.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/skin/mac/skinstyle.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/skin/china/skinstyle.css" />
+<script type="text/javascript" src="/scripts/gt_msg_en.js"/>
+
+<script type="text/javascript">
+var dsOption= {
+    fields :[
+        ,{name : 'title'  }
+        ,{name : 'content'  }
+        ,{name : 'when'  }
+        ,{name : 'where'  }
+        ,{name : 'ext'  }
+        ,{name : 'url'  }
+    ],
+
+    recordType : 'object'  //JSON=object , Array=array
+};
+
+// カラムの設定
+var colsOption = [  
+     {id: 'title' , header: "タイトル" , width :60  ,frozen:true}
+       ,{id: 'content' , header: "内容" , width :70  }
+       ,{id: 'where' , header: "場所" , width :70  }
+       ,{id: 'when' , header: "日時" , width :70  }
+       ,{id: 'ext' , header: "拡張項目" , width :200  }
+       ,{id: 'url' , header: "url" , width :200  }
+];
+
+var gridOption={
+		 id : "grid1"             //任意のid
+		,container : "gridbox"   //Gridを表示するdivのid
+		,loadURL : "search"  //外部Data(JSON)
+		,replaceContainer : true 
+		,dataset : dsOption      
+		,columns : colsOption
+		,encoding : "UTF-8"
+		,pageSize:5             //ページのサイズ
+		,pageSizeList : [5,10,15,20,25,30]  //表示単位
+		,width: "680"  //"100%" // 700,
+		,height: "150"  //"100%" // 330,
+		,showGridMenu : true     //メニュ
+		,allowCustomSkin : true  //スキンテーマの選択
+		,skin:"mac"              //既定のスキン
+		 // nav | pagesize | reload | add del save | print | filter chart | state
+		,toolbarContent : " nav | goto | pagesize | reload | print | filter| state "
+		,allowFreeze : true      //列の固定
+		,allowGroup : true       //グループ表示
+		,allowHide : true        //列の非表示
+		//,autoLoad : false      //自動ロード
+		,remotePaging : false    
+	    ,remoteSort : false
+	    ,remoteFilter : false
+};
+</script>
+
+<script type="text/javascript">
+	$(function(){
+		$("#datepicker").datepicker({dateFormat:"yy/mm/dd"});
+	});
+
+	function readdata()
+	{
+		alert('aaaaaaaaaaaaaaa');
+		var mygrid=new Sigma.Grid(gridOption);
+		Sigma.Util.onLoad(Sigma.Grid.render(mygrid));
+	}
+</script>
+
+<script type="text/javascript" > 
+<!-- All the scripts will go here  -->
+var data1 = [
+{serialNo:"010-0",country:"MA",employee:"Jerry",customer:"Keith",order2005:50,order2006:57,order2007:80,order2008:46,lastDate:"2008-10-02"},
+{serialNo:"010-1",country:"SP",employee:"Charles",customer:"Marks",order2005:79,order2006:37,order2007:40,order2008:90,lastDate:"2008-04-24"},
+{serialNo:"010-2",country:"SP",employee:"Vincent",customer:"Harrison",order2005:91,order2006:75,order2007:31,order2008:40,lastDate:"2008-02-17"},
+{serialNo:"020-3",country:"RA",employee:"Edward",customer:"Sidney",order2005:61,order2006:31,order2007:80,order2008:47,lastDate:"2008-10-16"},
+{serialNo:"022-1",country:"JA",employee:"Taro",customer:"Japan",order2005:161,order2006:131,order2007:180,order2008:147,lastDate:"2010-02-13"},
+{serialNo:"030-1",country:"日本",employee:"一日一善",customer:"追加野郎",order2005:100,order2006:200,order2007:300,order2008:400,lastDate:"2010-02-13"}
+];
+
+var dsOption1= {
+        fields :[
+                {name : "serialNo"},
+                {name : "country"},
+                {name : "customer"  },
+                {name : "employee"},
+                {name : 'order2005' ,type: 'float' },
+                {name : 'order2006' ,type: 'float' },
+                {name : 'order2007' ,type: 'float' },
+                {name : 'order2008' ,type: 'float' },
+                {name : 'lastDate' ,type:'date'  }
+        ],
+        recordType : 'object',
+        data: data1
+}
+
+var colsOption1 = [
+     {id: 'serialNo' , header: "注文番号" , width :60 },
+     {id: 'employee' , header: "従業員" , width :80  },
+           {id: 'country' , header: "国" , width :70  },
+           {id: 'customer' , header: "顧客" , width :80  },
+           {id: 'order2005' , header: "2005" , width :60},
+           {id: 'order2006' , header: "2006" , width :60},
+           {id: 'order2007' , header: "2007" , width :60},
+           {id: 'order2008' , header: "2008" , width :60},
+           {id: 'lastDate' , header: "発送日" , width :100}
+       
+];
+
+var gridOption1={
+        id : "grid2",
+        container : 'grid1_container',
+        dataset : dsOption1 ,
+        columns : colsOption1
+};
+
+var mygrid1=new Sigma.Grid(gridOption1);
+Sigma.Util.onLoad( Sigma.Grid.render(mygrid1) );
+ 
+</script> 
+</head>
+<body>
+	<form method="post" action="search">
+		<input type="text" id="datepicker" name="Text1"  size="10" />
+		<input type="submit" name="SUB1" value="送信" />
+		<input type="text" id="token" name="token" value=<%=request.getAttribute("token") %>></input>
+	</form>
+	<input type="button" onclick="readdata()"/>
+	<div id="gridbox">
+	</div>
+	
+	<div id="grid1_container">
+	</div>
+	<table border="1" cellspacing="0" cellpadding="5" bordercolor="#333333">
+		<tr>
+			<th width="200">タイトル</th>
+			<th width="350">コンテンツ</th>
+			<th width="150">日時</th>
+			<th width="100">場所</th>
+			<th width="100">拡張</th>
+		</tr>
+		<%
+		List<CalendarEvent> events = (List<CalendarEvent>)request.getAttribute("events");
+		for(CalendarEvent event: events){%>
+			<tr>
+				<td><%= event.getTitle() %></td>
+				<td><%= event.getContent() %></td>
+				<td><%= event.getWhen() %></td>
+				<td><%= event.getWhere() %></td>
+				<td><%= event.getExt() %></td>
+			</tr>		
+		<%}%>
+	</table>
+</body>
+</html>
