@@ -1,6 +1,7 @@
 package com.laughstyle.gae;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.security.GeneralSecurityException;
 import java.security.PrivateKey;
 
@@ -17,20 +18,26 @@ public class SessionTokenFactory {
 	{
 		String singleUseToken = AuthSubUtil.getTokenFromReply(query);
 		String sessionToken = null;
+
 		
 		try{
+// 緊急パッチ			
+//			singleUseToken = URLDecoder.decode(singleUseToken, "UTF-8");
 			sessionToken = AuthSubUtil.exchangeForSessionToken(singleUseToken, null);
 		}
 		catch(AuthenticationException e)
 		{
+			System.out.println(e.toString());
 			
 		}
 		catch(GeneralSecurityException e)
 		{
+			System.out.println(e.toString());
 			
 		}
 		catch(IOException e)
 		{
+			System.out.println(e.toString());
 			
 		}
 		
