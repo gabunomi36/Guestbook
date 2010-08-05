@@ -22,7 +22,7 @@ public class SessionTokenFactory {
 		
 		try{
 // 緊急パッチ			
-//			singleUseToken = URLDecoder.decode(singleUseToken, "UTF-8");
+			singleUseToken = URLDecoder.decode(singleUseToken, "UTF-8");
 			sessionToken = AuthSubUtil.exchangeForSessionToken(singleUseToken, null);
 		}
 		catch(AuthenticationException e)
